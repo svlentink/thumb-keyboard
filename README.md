@@ -5,11 +5,11 @@ status: WIP
 ## Idea
 
 The future will include smart glasses.
-Companies are pushing use to using voice for interaction with our devices.
+Companies are pushing us to using voice for interaction with our devices.
 
 Personally, I don't like this.
-E.g. when the smelly sweaty guy in the subway remembers that you needed to buy deodorant,
-you don't say "OK Google, remember me to buy deodorant".
+E.g. when the smelly sweaty guy in the subway remembers you to add deodorant to your shopping list,
+you won't say "OK Google, remember me to buy deodorant".
 Typing allows for more private interaction with your device.
 
 ### History
