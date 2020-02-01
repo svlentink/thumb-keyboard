@@ -36,7 +36,23 @@ are springed back again.
 Thus pressing one or more buttons slightly later
 does not matter.
 
+The basic keypads do not come with diodes,
+making it
+[unable to distinguish](https://electronics.stackexchange.com/questions/114993/pressing-same-key-rows-at-the-same-time)
+between any
+way of pressing 3 or 4 buttons pressed on a 2by2 matrix.
+Therefore, for every board,
+we have every one unique button (4)
+and any combinations of two buttons pressed at once (6)
+minus the diagonals (2) since pressing them is hard,
+and pressing any 3 or 4 buttons simultaneously (1).
+Resulting in `4 + 6-2 + 1 = 9` different input values.
+Using two matrices results in `9*9-1=80`,
+the one is deducated to switch between keyboard and mouse mode.
+
 ## Wiring
+
+**The wiring needs revision since we only have 80 options, we may need 8 pins instead of 6**
 
 We take the following physical layout:
 ```
@@ -95,4 +111,22 @@ RTL2--
 - https://tutorials-raspberrypi.com/connecz-raspberry-pi-kecpad-code-lock/
 - https://learn.adafruit.com/matrix-keypad?view=all
 - https://tutorials-raspberrypi.de/raspberry-pi-keypad-tastatur/
+
+## Key layout
+
+We assume a standard US keyboard layout
+(with pipe `|` button between backspace and enter).
+Each type has it's own additionals;
+command for Mac,
+search for chromebook
+and start for Windows.
+The common larger buttons are;
+space, backspace, enter, tab, shift, ctrl and alt.
+These larger buttons mean they are used more often.
+Of which shift, ctrl and alt are buttons that are to remain pressed
+(or simulated) when following through with another input.
+
+Since I'm not a UX designer, the code should/will
+enable someone to model different ways of interaction/behavior
+without needing to change the code.
 
