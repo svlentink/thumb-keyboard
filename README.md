@@ -52,8 +52,6 @@ the one is deducated to switch between keyboard and mouse mode.
 
 ## Wiring
 
-**The wiring needs revision since we only have 80 options, we may need 8 pins instead of 6**
-
 We take the following physical layout:
 ```
     Left thumb             Right thumb
@@ -77,6 +75,8 @@ ROW1   |o| |o|              |o| |o|
         _   _                _   _
 ROW2   |o| |o|              |o| |o|
 ```
+
+### Old wiring based on board with diodes (which we do not have atm.)
 
 We observe that the ROWs span across both the Left as the Right keypad.
 We therefore string these together;
@@ -103,6 +103,24 @@ LTL1--
 RTL2--
 ```
 
+### Actual wiring, based on board without diodes
+
+We used the
+[following](https://www.raspberrypi.org/documentation/usage/gpio/)
+set of pins:
+
+| | pins | GPIO | loc |
+| --- | --- | --- | --- |
+| ROW1 L | LTL1 | 9 | 21 |
+| ROW2 L | LTL2 | 25 | 22 |
+| COL1 | LTR2 | 11 | 23 |
+| COL2 | LTR1 | 8 | 24 |
+| ROW1 R | RTL2 | 5 | 29 |
+| ROW2 R | RTL1 | 6 | 31 |
+| COL3 | RTR1 | 13 | 33 |
+| COL4 | RTR2 | 19 | 35 |
+
+And we put a resistor in the row lines.
 
 ## Links
 
