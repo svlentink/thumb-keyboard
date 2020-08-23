@@ -1,49 +1,61 @@
 #!/usr/bin/env python3
 
-from pad4pi import rpi_gpio # https://github.com/brettmclean/pad4pi
+# GPIO pin numbers (which is BCM numbering)
+pins = {
+  'L' : {
+    'rows' : (9,25),
+    'cols' : (11,8),
+  },
+  'R' : {
+    'rows' : (5,6),
+    'cols' : (13,19),
+  },
+}
+
+
+#from pad4pi import rpi_gpio # https://github.com/brettmclean/pad4pi/blob/develop/pad4pi/rpi_gpio.py
 import RPi.GPIO as GPIO
-import time
-
-GPIO.cleanup()
+from time import sleep
 
 
-def onKeyPress(self, channel):
-  keyPressed = self.getKey()
-  print(keyPressed)
-rpi_gpio.Keypad._onKeyPress = onKeyPress
+def init(pins):
+  GPIO.cleanup()
+  GPIO.setmode(GPIO.BCM)
+  for board in pins:
+    for col in board['cols']:
+      GPIO.setup(col, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+      # GPIO.add_event_detect
+    for row in board['rows']:
+      GPIO.setup(row, GPIO.OUT)
 
-def setRowsAsInput(self):
-    # Set all rows as input
-    for i in range(len(self._row_pins)):
-        GPIO.setup(self._row_pins[i], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self._row_pins[i], GPIO.BOTH, callback=self._onKeyPress, bouncetime=rpi_gpio.DEFAULT_DEBOUNCE_TIME)
-rpi_gpio.Keypad._setRowsAsInput = setRowsAsInput
+def monitoring(pins,callback=print):
+  cols = pins['L']['cols'] + pins['R']['cols']
+  state = set()
+  while True:
+    something_pressed = False
+    for rowi in range(2):
+      on = board['L']['rows'][rowi]
+      off = board['R']['rows'][rowi-1]
+      GPIO.output(on,1)
+      GPIO.output(off,0)
+
+      sleep(0.02)
+
+      for coli in range(len(cols)):
+        pin = cols[coli]
+        if GPIO.input(pin):
+          pressed = str(coli) + str(rowi)
+          state.add(pressed)
+          something_pressed = True
+
+    if not something_pressed:
+      callback(state)
+      state = set()
 
 
-KEYPAD = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8]
-]
+try:
+  init(pins)
+  monitoring(pins)
+finally:
+  GPIO.cleanup()
 
-ROW_PINS = [23, 24] # BCM numbering
-COL_PINS = [5, 6, 13, 19] # BCM numbering
-
-factory = rpi_gpio.KeypadFactory()
-
-keypad = factory.create_keypad(
-  keypad=KEYPAD,
-  row_pins=ROW_PINS, #gpio_mode=GPIO.BCM,
-  col_pins=COL_PINS,
-  key_delay=100,
-  repeat=True,
-  repeat_delay=1,
-  repeat_rate=1)
-
-def printKey(key):
-    print(key)
-
-# printKey will be called each time a keypad button is pressed
-keypad.registerKeyPressHandler(printKey)
-
-while True:
-  time.sleep(1)

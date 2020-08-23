@@ -120,7 +120,11 @@ set of pins:
 | COL3 | RTR1 | 13 | 33 |
 | COL4 | RTR2 | 19 | 35 |
 
-And we put a resistor in the row lines.
+No need for a
+[resistor](https://www.freecodecamp.org/news/a-simple-explanation-of-pull-down-and-pull-up-resistors-660b308f116a/)
+since we enabling it using
+[pull down](https://raspi.tv/2013/rpi-gpio-basics-6-using-inputs-and-outputs-together-with-rpi-gpio-pull-ups-and-pull-downs)
+(thus down in software).
 
 ## Links
 
@@ -129,6 +133,26 @@ And we put a resistor in the row lines.
 - https://tutorials-raspberrypi.com/connecz-raspberry-pi-kecpad-code-lock/
 - https://learn.adafruit.com/matrix-keypad?view=all
 - https://tutorials-raspberrypi.de/raspberry-pi-keypad-tastatur/
+
+### Matrix optimization
+
+The code currently uses a very basic approach of reading out the inputs,
+maybe this can be optimized/pin numbers can be reduced.
+Do we want a diode in the schema?
+Some links to further explore this:
+
+- https://www.embedded.com/keyboard-and-display-multiplexing-the-traditional-approach/
+- https://en.wikipedia.org/wiki/Charlieplexing#Input_data_multiplexing
+- https://www.baldengineer.com/arduino-keyboard-matrix-tutorial.html
+- https://github.com/rongrimes/charlieplex6
+- http://www.openmusiclabs.com/learning/digital/input-matrix-scanning/index.html
+- http://www.openmusiclabs.com/learning/digital/input-scanning-matrix/switch-per-pin/index.html
+- https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
+- https://github.com/pocketmoneytronics/GPIO-Xmas-Tree/blob/master/xmas/tree.py
+- https://github.com/mandyRae/pythonic-charlieplex/blob/master/charlie.py
+- https://www.embedded.com/keyboard-and-display-multiplexing-charlieplexing/
+- https://forum.arduino.cc/index.php?topic=13494.0
+
 
 ## Key layout
 
