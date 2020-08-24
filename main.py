@@ -21,7 +21,8 @@ from time import sleep
 def init(pins):
   GPIO.cleanup()
   GPIO.setmode(GPIO.BCM)
-  for board in pins:
+  for boardi in pins:
+    board = pins[boardi]
     for col in board['cols']:
       GPIO.setup(col, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
       # GPIO.add_event_detect
@@ -34,8 +35,12 @@ def monitoring(pins,callback=print):
   while True:
     something_pressed = False
     for rowi in range(2):
-      on = board['L']['rows'][rowi]
-      off = board['R']['rows'][rowi-1]
+      on = pins['L']['rows'][rowi]
+      off = pins['L']['rows'][rowi-1]
+      GPIO.output(on,1)
+      GPIO.output(off,0)
+      on = pins['R']['rows'][rowi]
+      off = pins['R']['rows'][rowi-1]
       GPIO.output(on,1)
       GPIO.output(off,0)
 
@@ -48,7 +53,7 @@ def monitoring(pins,callback=print):
           state.add(pressed)
           something_pressed = True
 
-    if not something_pressed:
+    if not something_pressed and state:
       callback(state)
       state = set()
 
