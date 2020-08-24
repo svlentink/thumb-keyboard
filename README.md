@@ -172,3 +172,11 @@ Since I'm not a UX designer, the code should/will
 enable someone to model different ways of interaction/behavior
 without needing to change the code.
 
+## Possibility to distinguish 3 button pressed
+
+After testing our initial prototype,
+we discovered that when you press two buttons at the same time on one matrix,
+release one and hold one down and than press another,
+we do can distinguish 3 buttons pressed per matrix.
+Not sure if we want this though.
+

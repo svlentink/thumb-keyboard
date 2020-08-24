@@ -19,7 +19,6 @@ from time import sleep
 
 
 def init(pins):
-  GPIO.cleanup()
   GPIO.setmode(GPIO.BCM)
   for boardi in pins:
     board = pins[boardi]
@@ -58,9 +57,35 @@ def monitoring(pins,callback=print):
       state = set()
 
 
+def coord2binary(inp):
+  result = ''
+  for y in range(2):
+    for x in range(4):
+      coord = str(x) + str(y)
+      result += str(int(coord in inp))
+  return result
+
+
+def visualize_buttons(s):
+  a = s.replace('1','X')
+  row1 = '  '.join( list( a[:4] ) )
+  row2 = '  '.join( list( a[-4:] ) )
+  print('')
+  print('')
+  print(row1)
+  print('')
+  print(row2)
+  print('')
+
+
+def callback(inp):
+  bin = coord2binary(inp)
+  visualize_buttons(bin)
+
+
 try:
   init(pins)
-  monitoring(pins)
+  monitoring(pins,callback)
 finally:
   GPIO.cleanup()
 
