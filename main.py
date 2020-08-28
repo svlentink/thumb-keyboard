@@ -48,7 +48,7 @@ def monitoring(pins,callback=print):
       for coli in range(len(cols)):
         pin = cols[coli]
         if GPIO.input(pin):
-          pressed = str(coli) + str(rowi)
+          pressed = (coli,  rowi)
           state.add(pressed)
           something_pressed = True
 
@@ -61,7 +61,7 @@ def coord2binary(inp):
   result = ''
   for y in range(2):
     for x in range(4):
-      coord = str(x) + str(y)
+      coord = (x, y)
       result += str(int(coord in inp))
   return result
 

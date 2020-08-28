@@ -1,0 +1,46 @@
+
+'11111111':
+  hold: false
+  action: switch_between_keyboard_and_mouse
+
+# all single button presses
+'00000001':
+  hold: false
+  action: char
+  arg: 'a'
+'01000000':
+  hold: true
+  action: shift
+# we won't hold the tab key,
+# since you want to be able to quickly
+# apply multiple
+# and in case of multiple, you press
+# tab as last, like with ALT + TAB
+'10000000':
+  action: tab
+
+
+# 3 pressed on single matrix
+# this is not easy to do and the buttons
+# can't be all pressed at the same time
+# thus we ignore this action
+'01??11??': &all3
+  action: none
+'10??11??': *all3
+'11??01??': *all3
+'11??10??': *all3
+'??01??11': *all3
+'??10??11': *all3
+'??11??01': *all3
+'??11??10': *all3
+
+# arrow keys
+'00110000':
+  action: up
+'00000011':
+  action: down
+'00100010':
+  action: left
+'00010001':
+  action: right
+

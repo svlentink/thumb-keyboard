@@ -2,6 +2,13 @@
 
 status: WIP
 
+Next steps:
+
+- Appear as [bluetooth](https://people.csail.mit.edu/albert/bluez-intro/c212.html) keyboard ([HID](https://github.com/007durgesh219/BTGamepad)) to devices
+- binary to letters
+- mouse option
+- 
+
 ## Idea
 
 The future will include smart glasses.
