@@ -7,7 +7,8 @@ Next steps:
 - Appear as [bluetooth](https://people.csail.mit.edu/albert/bluez-intro/c212.html) keyboard ([HID](https://github.com/007durgesh219/BTGamepad)) to devices
 - binary to letters
 - mouse option
-- 
+- https://github.com/SavinaRoja/PyUserInput
+- https://github.com/boppreh/keyboard
 
 ## Idea
 
