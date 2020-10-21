@@ -2,14 +2,6 @@
 
 status: WIP
 
-Next steps:
-
-- Appear as [bluetooth](https://people.csail.mit.edu/albert/bluez-intro/c212.html) keyboard ([HID](https://github.com/007durgesh219/BTGamepad)) to devices
-- binary to letters
-- mouse option
-- https://github.com/SavinaRoja/PyUserInput
-- https://github.com/boppreh/keyboard
-
 ## Idea
 
 The future will include smart glasses.
@@ -133,33 +125,6 @@ No need for a
 since we enabling it using
 [pull down](https://raspi.tv/2013/rpi-gpio-basics-6-using-inputs-and-outputs-together-with-rpi-gpio-pull-ups-and-pull-downs)
 (thus down in software).
-
-## Links
-
-- https://raspberrypi.stackexchange.com/questions/53665/how-to-use-a-4x4-keypad-in-python
-- https://maker.pro/raspberry-pi/tutorial/how-to-use-a-keypad-with-a-raspberry-pi-4
-- https://tutorials-raspberrypi.com/connecz-raspberry-pi-kecpad-code-lock/
-- https://learn.adafruit.com/matrix-keypad?view=all
-- https://tutorials-raspberrypi.de/raspberry-pi-keypad-tastatur/
-
-### Matrix optimization
-
-The code currently uses a very basic approach of reading out the inputs,
-maybe this can be optimized/pin numbers can be reduced.
-Do we want a diode in the schema?
-Some links to further explore this:
-
-- https://www.embedded.com/keyboard-and-display-multiplexing-the-traditional-approach/
-- https://en.wikipedia.org/wiki/Charlieplexing#Input_data_multiplexing
-- https://www.baldengineer.com/arduino-keyboard-matrix-tutorial.html
-- https://github.com/rongrimes/charlieplex6
-- http://www.openmusiclabs.com/learning/digital/input-matrix-scanning/index.html
-- http://www.openmusiclabs.com/learning/digital/input-scanning-matrix/switch-per-pin/index.html
-- https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
-- https://github.com/pocketmoneytronics/GPIO-Xmas-Tree/blob/master/xmas/tree.py
-- https://github.com/mandyRae/pythonic-charlieplex/blob/master/charlie.py
-- https://www.embedded.com/keyboard-and-display-multiplexing-charlieplexing/
-- https://forum.arduino.cc/index.php?topic=13494.0
 
 
 ## Key layout
