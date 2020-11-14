@@ -16,7 +16,7 @@ def visualize_buttons(s):
 
 
 class Action:
-    def __init__(self, mapping_file='keybinding/example.yml'):
+    def __init__(self, mapping_file='keybindings/example.yml'):
         self._action = self._key_action
         self._memory = ''
         with open(mapping_file, 'r') as f:
