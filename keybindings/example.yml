@@ -6,8 +6,9 @@
 # all single button presses
 '00000001':
   hold: false
-  action: char
-  arg: 'a'
+  action: a
+'10000000':
+  action: b
 '01000000':
   hold: true
   action: shift
@@ -25,7 +26,7 @@
 # can't be all pressed at the same time
 # thus we ignore this action
 '01??11??': &all3
-  action: none
+  action: ''
 '10??11??': *all3
 '11??01??': *all3
 '11??10??': *all3
