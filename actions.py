@@ -17,12 +17,7 @@ def visualize_buttons(s):
 
 class Action:
     def _add_mapping(self, k, v):
-        if '?' not in k:
-            if k not in self._map:
-                self._map[k] = v
-            else:
-                print('WARNING duplicate key in keybinding',k)
-        else:
+        if '?' in k:
             for i in range(len(k)):
                 if k[i] is '?':
                     pre = k[:i]
@@ -30,6 +25,11 @@ class Action:
                     self._add_mapping(pre + '0' + post, v)
                     self._add_mapping(pre + '1' + post, v)
                     return
+        else:
+            if k not in self._map:
+                self._map[k] = v
+            else:
+                print('WARNING duplicate key in keybinding',k)
 
     def __init__(self, mapping_file='keybindings/example.yml'):
         self._action = self._key_action
