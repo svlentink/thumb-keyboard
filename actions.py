@@ -62,8 +62,10 @@ class Action:
             self._memory = self._memory + act['action'] + '+'
             return
         else:
-            keyboard.send(self._memory + act['action'])
+            press = self._memory + act['action']
             self._memory = ''
+            print(press)
+            keyboard.send(press)
 
     def _mouse_action(self, inp):
         return None
