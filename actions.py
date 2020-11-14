@@ -16,13 +16,13 @@ def visualize_buttons(s):
 
 
 class Action:
-    def _add_mapping(k,v):
+    def _add_mapping(self, k, v):
         for i in range(len(k)):
             if k[i] is '?':
                 pre = k[:i]
-                post = [i+1:]
-                self._add_mapping(pre + '0' + post)
-                self._add_mapping(pre + '1' + post)
+                post = k[i+1:]
+                self._add_mapping(pre + '0' + post, v)
+                self._add_mapping(pre + '1' + post, v)
         if '?' not in k:
             if k not in self._map:
                 self._map[k] = v
@@ -35,9 +35,8 @@ class Action:
         self._map = {}
         with open(mapping_file, 'r') as f:
             raw = f.read()
-        for k in raw:
-
-        self.map = load(raw)
+        for k,v in raw.items():
+            self._add_mapping(k,v)
 
     def binary2action(self,inp):
         # switch between keyboard/mouse if all buttons are pressed
@@ -50,8 +49,8 @@ class Action:
             self._action(inp)
 
     def _key_action(self, inp):
-        if inp in self.map:
-            act = self.map[inp]
+        if inp in self._map:
+            act = self._map[inp]
         else:
             self._memory = ''
             print('WARNING: combination not in mapping',inp)
