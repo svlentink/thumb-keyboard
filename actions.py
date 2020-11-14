@@ -35,7 +35,8 @@ class Action:
         self._map = {}
         with open(mapping_file, 'r') as f:
             raw = f.read()
-        for k,v in raw.items():
+        obj = load(raw)
+        for k,v in obj.items():
             self._add_mapping(k,v)
 
     def binary2action(self,inp):
